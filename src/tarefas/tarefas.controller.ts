@@ -16,13 +16,19 @@ export class TarefasController {
   constructor(private readonly tarefasService: TarefasService) {}
 
   @Post()
-  create(@Body() createTarefaDto: CreateTarefaDto) {
-    return this.tarefasService.create(createTarefaDto);
+  async create(@Body() createTarefaDto: CreateTarefaDto) {
+    return {
+      estado: 'ok',
+      dados: await this.tarefasService.create(createTarefaDto),
+    };
   }
 
   @Get()
-  findAll() {
-    return this.tarefasService.findAll();
+  async findAll() {
+    return {
+      estado: 'ok',
+      dados: await this.tarefasService.findAll(),
+    };
   }
 
   @Get(':id')
