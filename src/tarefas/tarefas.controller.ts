@@ -32,8 +32,11 @@ export class TarefasController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tarefasService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return {
+      estado: 'ok',
+      dados: await this.tarefasService.findOne(+id),
+    };
   }
 
   @Patch(':id')

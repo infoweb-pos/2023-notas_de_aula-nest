@@ -12,7 +12,6 @@ export class TarefasService {
   ) {}
 
   create(createTarefaDto: CreateTarefaDto) {
-    console.log(createTarefaDto);
     return this.repositorio.save(createTarefaDto);
   }
 
@@ -21,7 +20,7 @@ export class TarefasService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} tarefa`;
+    return this.repositorio.findOneBy({ id: id });
   }
 
   update(id: number, updateTarefaDto: UpdateTarefaDto) {
